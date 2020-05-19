@@ -1,25 +1,27 @@
 
-function duplicateLetters(...args) {
-  const str = args[0];
-  const splitString = str.split('');
-  const hashMap = {};
+function duplicateLetters(string) {
+  const letters = string.split('');
+  const letterFrequencyMap = {};
 
-  splitString.forEach((letter) => {
-    if (!hashMap[letter]) {
-      hashMap[letter] = 0;
+  letters.forEach((letter) => {
+    if (!letterFrequencyMap[letter]) {
+      letterFrequencyMap[letter] = 0;
     }
 
-    hashMap[letter] += 1;
+    letterFrequencyMap[letter] += 1;
   });
 
-  const charKeyValue = Object.entries(hashMap);
-  charKeyValue.sort((a, b) => b[1] - a[1]);
+  const letterFrequencyKeyValuePair = Object.entries(letterFrequencyMap);
 
-  if (charKeyValue[0][1] === 1) {
-    return false;
+  const duplicateLetter = { value: null, count: 0 };
+
+  for (let index = 0; index < letterFrequencyKeyValuePair.length; index += 1) {
+    if (letterFrequencyKeyValuePair[index][1] > duplicateLetter.count) {
+      [duplicateLetter.value, duplicateLetter.count] = letterFrequencyKeyValuePair[index];
+    }
   }
 
-  return charKeyValue[0][1];
+  return duplicateLetter.count > 1 ? duplicateLetter.count : false;
 }
 
 export {

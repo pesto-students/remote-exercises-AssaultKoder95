@@ -1,14 +1,7 @@
 function isTriangle(...sides) {
-  const [a, b, c] = sides;
-  let isValid = true;
+  const [side1, side2, side3] = sides;
 
-  if (!(a + b > c)) isValid = false;
-
-  if (!(c + b > a)) isValid = false;
-
-  if (!(c + a > b)) isValid = false;
-
-  return isValid;
+  return ((side1 + side2 > side3) && (side2 + side3 > side1) && (side3 + side1 > side2));
 }
 
 export {

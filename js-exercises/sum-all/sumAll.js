@@ -1,5 +1,5 @@
-function findSum(a, b) {
-  return Math.floor(((a - b + 1) * (a + b)) / 2);
+function findSum(upperBound, lowerBound) {
+  return Math.floor(((upperBound - lowerBound + 1) * (upperBound + lowerBound)) / 2);
 }
 
 function sumAll(numArray) {
