@@ -1,8 +1,8 @@
-const limitFunctionCallCount = (callback, limit) => {
-  let callbackFnCallCount = 0;
+const limitFunctionCallCount = (callback, invocationLimit) => {
+  let invocationCount = 0;
   return (...args) => {
-    if (callbackFnCallCount < limit) {
-      callbackFnCallCount += 1;
+    if (invocationCount < invocationLimit) {
+      invocationCount += 1;
       return callback(...args);
     }
     return null;
