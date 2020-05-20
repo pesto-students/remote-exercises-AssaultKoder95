@@ -10,8 +10,11 @@ then it should return the cached result and not invoke `cb` again.
 # Requirements
 
 ### **What are some good real-life use cases for such a function?**
-*Write your response here*
 
-### **What *extra* test cases can you add to the test file?**
+One of the use cases where we can implement this is:
 
-*Add relevant test-cases in the test file*
+- Inside functions that do heavy computations
+
+### **What _extra_ test cases can you add to the test file?**
+
+_Add relevant test-cases in the test file_
