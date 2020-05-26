@@ -1,0 +1,3 @@
+function diffArray() {}
+
+export { diffArray };
