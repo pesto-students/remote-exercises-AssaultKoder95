@@ -26,7 +26,7 @@ test('promise chain value passing', async () =>
 test('promise chain sleeping', async () => {
   const start = performance.now();
   return Promise.resolve()
-    .then(await sleep(20))
+    .then(sleep(20))
     .then(() => {
       expect(performance.now() - start).toBeGreaterThanOrEqual(19);
     });
