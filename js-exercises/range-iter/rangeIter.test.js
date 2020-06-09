@@ -14,7 +14,7 @@ describe('rangeIter', () => {
     expect([...iterable]).toEqual([-2]);
   });
 
-  describe('converting instance to array', () => {
+  describe.skip('converting instance to array', () => {
     it('returns the same as converting [Symbol.iterator]() iterator to array', () => {
       const rangeIterable = rangeIter(2, 5);
       const iterator = rangeIterable[Symbol.iterator]();
