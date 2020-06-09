@@ -1,4 +1,4 @@
-import { count } from './iterInfinite';
+import { count, cycle } from './iterInfinite';
 
 describe('Count function', () => {
   test('should be an iterable', () => {
@@ -26,5 +26,42 @@ describe('Count function', () => {
     expect(iterator.next().value).toBe(25);
     expect(iterator.next().value).toBe(30);
     expect(iterator.next().value).toBe(35);
+  });
+});
+
+describe('Cycle function', () => {
+  test('should be an iterable', () => {
+    const iterator = cycle('abc');
+    expect(typeof iterator.next).toBe('function');
+    expect(iterator.next()).toHaveProperty('value');
+    expect(iterator.next()).toHaveProperty('done');
+  });
+
+  test('should follow circular series', () => {
+    const iterator = cycle('abcd');
+    expect(iterator.next().value).toBe('a');
+    expect(iterator.next().value).toBe('b');
+    expect(iterator.next().value).toBe('c');
+    expect(iterator.next().value).toBe('d');
+    expect(iterator.next().value).toBe('a');
+  });
+
+  test('should return circular series when step value is present', () => {
+    const iterator = cycle('abcd', 10);
+    expect(iterator.next().value).toBe('a');
+    expect(iterator.next().value).toBe('b');
+    expect(iterator.next().value).toBe('c');
+    expect(iterator.next().value).toBe('d');
+    expect(iterator.next().value).toBe('a');
+    expect(iterator.next().value).toBe('b');
+    expect(iterator.next().value).toBe('c');
+    expect(iterator.next().value).toBe('d');
+    expect(iterator.next().value).toBe('a');
+    expect(iterator.next().value).toBe('b');
+
+    // Post 10 cycles it should return done as true
+    const result = iterator.next();
+    expect(result.value).toBe(undefined);
+    expect(result.done).toBe(true);
   });
 });
