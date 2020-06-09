@@ -24,4 +24,14 @@ function* cycle(string, limit) {
   }
 }
 
-export { count, cycle };
+function* repeat(initial, limit) {
+  let currentCount = 0;
+
+  while (true) {
+    if (currentCount === limit) return;
+    yield initial;
+    currentCount += 1;
+  }
+}
+
+export { count, cycle, repeat };
