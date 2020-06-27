@@ -1,0 +1,7 @@
+.addItemForm input, button {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #111111;
+  border-radius: 3px;
+}
+
